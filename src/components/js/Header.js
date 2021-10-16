@@ -13,8 +13,8 @@ class Header extends Component {
                     <div>Smart Movies</div>
                 </div>
                 <div className="section header-buttons">
-                    <button>Filmes</button>
-                    <button>Séries</button>
+                    <button onClick={() => this.props.onContentChange(1)}>Filmes</button>
+                    <button onClick={() => this.props.onContentChange(2)}>Séries</button>
                 </div>
                 <div className="section header-medias">
                     <div><FontAwesomeIcon icon={faTwitter} /></div>

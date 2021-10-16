@@ -1,48 +1,38 @@
 import React, { Component } from 'react';
+
 import Pagination from './Pagination';
 import Card from './Card';
-import Axios from 'axios';
 
 import '../css/Content.css';
 
 class Content extends Component {
 
-    constructor(props) {
+    getContentTitle = () => {
 
-        super(props);
+        let title = '';
 
-        this.state = {
-            'title': 'Filmes',
-            'content': []
-        };
+        if (this.props.contentType === 1)
+            title = 'Filmes';
+        else if (this.props.contentType === 2)
+            title = 'Séries';
 
-    }
-
-    async componentDidMount() {
-
-        try {
-
-            let response = await Axios.get('http://localhost:3000/filmes?page=1');
-
-            this.setState({ content: response.data.results });
-
-        } catch (err) { console.error(err); }
+        return title;
 
     }
 
     render() {
         return (
             <section id="content">
-                <h1>{this.state.title}</h1>
+                <h1>{this.getContentTitle()}</h1>
                 <div className="pagination-container">
                     <Pagination />
                 </div>
                 <div id="card-list">
                     {
-                        this.state.content.map(item => 
+                        this.props.content.map(item => 
                             <Card key={item.id} 
                                 image={item.poster_path} 
-                                title={item.title} 
+                                title={item.title || item.name} 
                                 overview={item.overview} />
                         )
                     }
