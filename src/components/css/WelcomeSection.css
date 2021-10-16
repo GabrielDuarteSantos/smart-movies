@@ -1,0 +1,9 @@
+#welcome {
+    background-color: #809fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#welcome h1 {
+    font-size: 2.2rem;
+}

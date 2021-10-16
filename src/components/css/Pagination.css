@@ -1,0 +1,31 @@
+#pagination {
+    display: flex;
+}
+
+#pagination > :is(button, div) {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid #888;
+    background-color: #fff;
+    font-size: 1.2rem;
+}
+
+#pagination .action {
+    border-width: 1px;
+    cursor: pointer;
+}
+
+#pagination .action:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#pagination .action:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#pagination .page-number {
+    border-width: 1px 0;
+}

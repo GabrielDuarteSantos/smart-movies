@@ -1,0 +1,43 @@
+.card-container {
+    width: 325px;
+    height: 750px;
+    padding: 20px;
+}
+
+.card-container .card {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px #00000085;
+    transition: .2s;
+}
+
+.card-container .card:hover {
+    transform: scale(1.03);
+}
+
+.card .card-image {
+    height: 60%;
+}
+
+.card .card-image img {
+    height: 100%;
+    width: 100%;
+}
+
+.card .card-info {
+    padding: 12px;
+}
+
+.card .title {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.card .overview {
+    text-align: left;
+}

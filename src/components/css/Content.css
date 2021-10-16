@@ -1,0 +1,20 @@
+#content {
+    text-align: center;
+    padding: 50px 10rem;
+}
+
+#content h1 {
+    font-size: 2rem;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
