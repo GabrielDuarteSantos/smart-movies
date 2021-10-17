@@ -1,0 +1,17 @@
+.cast-card {
+    text-align: center;
+    margin-right: 15px;
+}
+
+.cast-card:last-child {
+    margin-right: 0;
+}
+
+.cast-card img {
+    width: 138px;
+    height: 175px;
+}
+
+.cast-card h4 {
+    font-weight: normal;
+}

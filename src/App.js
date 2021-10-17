@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Axios from 'axios';
 
 import Header from './components/js/Header';
 import WelcomeSection from './components/js/WelcomeSection';
-import Content from './components/js/Content';
+import ContentListing from './components/js/ContentListing';
+import Info from './components/js/Info';
+import CastCard from './components/js/CastCard';
 
 import './App.css';
 
@@ -17,7 +19,8 @@ class App extends Component {
             'contentType': 1,
             'content': [],
             'currentPage': 1,
-            'totalPages': 1
+            'totalPages': 1,
+            'selectedCard': undefined
         };
 
     }
@@ -32,14 +35,15 @@ class App extends Component {
 
     handleContentChange = async (contentType) => {
 
-        if (contentType === this.state.contentType) return;
+        let currentPage = 1,
+            selectedCard = undefined;
 
-        let currentPage = 1;
         let content = await this.getContent(contentType, currentPage);
 
         this.setState({
             contentType, 
             currentPage,
+            selectedCard,
             'content': content.results, 
             'totalPages': content.total_pages
         });
@@ -61,7 +65,7 @@ class App extends Component {
 
     }
 
-    getContent = async (contentType, page) => {
+    getContentUrl(contentType) {
 
         let urlContent = '';
 
@@ -70,7 +74,13 @@ class App extends Component {
         else if (contentType === 2)
             urlContent = 'series';
 
-        let url = `http://localhost:3000/${urlContent}?page=` + page;
+        return 'http://localhost:3000/' + urlContent;
+
+    }
+
+    getContent = async (contentType, page) => {
+
+        let url = this.getContentUrl(contentType) + '?page=' + page;
 
         try {
 
@@ -82,16 +92,71 @@ class App extends Component {
 
     }
 
+    getContentById = async (id, contentType) => {
+
+        let url = this.getContentUrl(contentType) + '/' + id;
+
+        try {
+
+            let response = await Axios.get(url);
+
+            return response.data;
+
+        } catch (err) { console.error(err); }
+
+    }
+
+    handleCardSelection = async (id) => {
+
+        let selectedCard = await this.getContentById(id, this.state.contentType);
+
+        this.setState({ selectedCard });
+
+    }
+
+    getComponents() {
+
+        if (typeof this.state.selectedCard === 'undefined') {
+
+            return (
+                <>
+                    <WelcomeSection />
+                    <ContentListing 
+                        contentType={this.state.contentType} 
+                        content={this.state.content}
+                        currentPage={this.state.currentPage}
+                        onPageChange={this.handlePageChange}
+                        onCardSelection={this.handleCardSelection} />
+                </>
+            );
+
+        } else {
+
+            return (
+                <>
+                    <Info data={this.state.selectedCard} />
+                    <section id="cast">
+                        <h2>Elenco</h2>
+                        <div className="cast-list">
+                            {
+                                this.state.selectedCard.credits.cast.map(member => 
+                                    <CastCard key={member.id} data={member} />
+                                )
+                            }
+                        </div>
+                    </section>
+                </>
+            );
+
+        }
+
+    }
+
     render() {
         return (
             <>
                 <Header onContentChange={this.handleContentChange} />
-                <WelcomeSection />
-                <Content 
-                    contentType={this.state.contentType} 
-                    content={this.state.content}
-                    currentPage={this.state.currentPage}
-                    onPageChange={this.handlePageChange} />
+                {this.getComponents()}
             </>
         );
     }

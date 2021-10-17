@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import Pagination from './Pagination';
-import Card from './Card';
+import Card from './ContentCard';
 
-import '../css/Content.css';
+import '../css/ContentListing.css';
 
-class Content extends Component {
+class ContentListing extends Component {
 
     getContentTitle = () => {
 
@@ -33,9 +33,8 @@ class Content extends Component {
                     {
                         this.props.content.map(item => 
                             <Card key={item.id} 
-                                image={item.poster_path} 
-                                title={item.title || item.name} 
-                                overview={item.overview} />
+                                data={item}
+                                onCardSelection={this.props.onCardSelection} />
                         )
                     }
                 </div>
@@ -50,4 +49,4 @@ class Content extends Component {
 
 }
 
-export default Content;
+export default ContentListing;

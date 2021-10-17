@@ -30,6 +30,9 @@
 
 .card .card-info {
     padding: 12px;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
 }
 
 .card .title {
@@ -40,4 +43,23 @@
 
 .card .overview {
     text-align: left;
+    overflow-x: auto;
+}
+
+.card .overview::-webkit-scrollbar {
+    width: 12px;
+}
+
+.card .overview::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.card .overview::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.card .overview::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
