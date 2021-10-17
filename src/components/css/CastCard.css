@@ -1,6 +1,8 @@
 .cast-card {
     text-align: center;
     margin-right: 15px;
+    word-break: break-word;
+    width: 138px;
 }
 
 .cast-card:last-child {

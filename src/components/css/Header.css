@@ -14,7 +14,7 @@ nav .section {
 }
 
 nav .header-title {
-    width: 33%;
+    width: 35%;
     justify-content: flex-start;
     font-weight: 800;
 }
@@ -24,7 +24,7 @@ nav .header-title {
 }
 
 nav .header-buttons {
-    width: 34%;
+    width: 30%;
     justify-content: center;
 }
 
@@ -44,7 +44,7 @@ nav .header-buttons {
 }
 
 nav .header-medias {
-    width: 33%;
+    width: 35%;
     justify-content: flex-end;
 }
 

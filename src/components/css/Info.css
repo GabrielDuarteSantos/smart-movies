@@ -51,33 +51,3 @@
     width: 70%;
     padding-left: 30px;
 }
-
-
-#cast {
-    width: 80%;
-    margin: 20px auto;
-}
-
-#cast .cast-list {
-    padding: 10px 0;
-    display: flex;
-    overflow-x: auto;
-}
-
-#cast .cast-list::-webkit-scrollbar {
-    height: 12px;
-}
-
-#cast .cast-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
-}
-
-#cast .cast-list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
-
-#cast .cast-list::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
