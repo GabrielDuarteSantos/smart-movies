@@ -25,7 +25,9 @@ class Content extends Component {
             <section id="content">
                 <h1>{this.getContentTitle()}</h1>
                 <div className="pagination-container">
-                    <Pagination />
+                    <Pagination 
+                        onPageChange={this.props.onPageChange}
+                        currentPage={this.props.currentPage} />
                 </div>
                 <div id="card-list">
                     {
@@ -38,7 +40,9 @@ class Content extends Component {
                     }
                 </div>
                 <div className="pagination-container">
-                    <Pagination />
+                    <Pagination 
+                        onPageChange={this.props.onPageChange}
+                        currentPage={this.props.currentPage} />
                 </div>
             </section>
         );
